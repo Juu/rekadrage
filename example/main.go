@@ -24,6 +24,8 @@ func main() {
 
 func processFile(fileName string, c rekadrage.Config) {
 
+	log := log.New(os.Stdout, "", log.Ldate|log.Ltime)
+
 	file, err := os.Open(fileName)
 	if err != nil {
 		log.Printf("Couldn't open file: %v\n", err)
@@ -44,7 +46,7 @@ func processFile(fileName string, c rekadrage.Config) {
 	}
 	log.Printf("File %s opened, type: %s", fileName, format)
 
-	imgOut := rekadrage.Rekadrage(img, c)
+	imgOut := rekadrage.Rekadrage(img, c, log)
 
 	// Finally save the output picture
 	switch filepath.Ext(outPath) {

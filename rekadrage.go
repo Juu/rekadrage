@@ -13,7 +13,7 @@ type Config struct {
 	Tolerance int // Tolerance admitted for the difference with control pixel. Higher tolerance will result in a narrower cropping.
 }
 
-func Rekadrage(img image.Image, c Config) image.Image {
+func Rekadrage(img image.Image, c Config, log *log.Logger) image.Image {
 
 	frame := img.Bounds()
 	log.Println("Image size:", frame)

@@ -33,9 +33,9 @@ func Rekadrage(img image.Image, c Config) image.Image {
 	frame.Min.Y -= c.Margin
 	frame.Max.X += c.Margin
 	frame.Max.Y += c.Margin
-	frame = frame.Intersect(img.Bounds())
 	log.Println("Frame with margins:", frame)
 	imgOut := image.NewRGBA(frame)
+	draw.Draw(imgOut, frame, &image.Uniform{color.White}, image.Point{}, draw.Src)
 	draw.Draw(imgOut, frame, img, image.Point{frame.Min.X, frame.Min.Y}, 0)
 
 	return imgOut
